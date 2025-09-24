@@ -1,28 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
+	const [inputValue, setInputValue] = useState("")
+	const [todos, setTodos] = useState(["Make the bed", "Wash my hands", "Eat", "Walk the dog"]);
+
+
 	return (
-		<div className="text-center">
-            
+		<div className="container">
+			<h1>todos</h1>
+			<ul>
+				<li><input type="text"
+					onChange={(e) => setInputValue(e.target.value)}
+					value={inputValue}
+					onKeyDown={(e) => {
+						if (e.key === "Enter") {
+							setTodos(todos.concat([inputValue]));
+							setInputValue("");
+						}
+					}}
+					placeholder="what needs to be done?"></input>
+				</li>
+				{todos.length === 0 ? (
+					<li>No tasks, add a task</li>
+				) : (
+					todos.map((item, index) => (
+						<li className="todo-delete">
+							{item}{""}
+							<i className="fas fa-trash-alt delete-icon"
+								onClick={() =>
+									setTodos(
+										todos.filter(
+											(t, currentIndex) => index != currentIndex
+										)
+									)
+								}></i>
+						</li>
+					)))}
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+			</ul>
+			<div>{todos.length} item left</div>
 		</div>
-	);
-};
 
+	);
+
+};
 export default Home;

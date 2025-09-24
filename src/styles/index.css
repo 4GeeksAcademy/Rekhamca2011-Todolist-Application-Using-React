@@ -9,3 +9,42 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+body{
+    margin-top: 100px;
+    background: lightgrey;
+}
+ul{
+    padding:0;
+    margin-bottom:0;
+}
+ul li{
+    border: 1px solid grey;
+    list-style:none;
+    padding:5px;
+}
+h1{
+    text-align:center;
+    color: lightslategray;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 6em;
+}
+input{
+    border:none;
+    width:100%;
+}
+
+.delete-icon {
+  opacity: 0;
+  cursor: pointer;
+  color: #888;
+  transition: opacity 0.2s ease;
+}
+
+.todo-delete:hover .delete-icon {
+  opacity: 1;
+}
+
+.todo-delete span {
+  flex-grow: 1;
+  text-align: left;
+}
