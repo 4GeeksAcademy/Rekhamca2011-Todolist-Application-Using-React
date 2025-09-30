@@ -18,7 +18,7 @@ const Home = () => {
 							setInputValue("");
 						}
 					}}
-					placeholder="what needs to be done?"></input>
+					placeholder="What needs to be done?"></input>
 				</li>
 				{todos.length === 0 ? (
 					<li>No tasks, add a task</li>
@@ -26,7 +26,7 @@ const Home = () => {
 					todos.map((item, index) => (
 						<li className="todo-delete">
 							{item}{""}
-							<i className="fas fa-trash-alt delete-icon"
+							<i className="fas fa-times delete-btn"
 								onClick={() =>
 									setTodos(
 										todos.filter(
